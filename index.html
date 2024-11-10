@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Portal</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Roboto', sans-serif;
+            color: #77ec0a;
+        }
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+        .neon {
+            color: #111111;
+            text-shadow: 0 0 5px #77ec0a, 0 0 10px #77ec0a, 0 0 20px #77ec0a;
+            font-size: 2em;
+        }
+        .input-box {
+            background-color: #000;
+            border: 2px solid #77ec0a;
+            padding: 10px;
+            border-radius: 5px;
+            color: #77ec0a;
+        }
+        .button {
+            background-color: #77ec0a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #000;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .error {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="neon">Welcome to the Result Portal</h1>
+        <input type="text" id="rollNumber" class="input-box" placeholder="Enter your roll number">
+        <button onclick="checkResult()" class="button">Get Result</button>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        const results = [
+            { rollNo: 271965, name: "Adeem", score: "32 / 35", percentage: "91%", status: "EXCELLENT" },
+            { rollNo: 258317, name: "SYED ANAS", score: "31 / 35", percentage: "89%", status: "EXCELLENT" },
+            { rollNo: 260679, name: "Abdul Muizz", score: "31 / 35", percentage: "89%", status: "EXCELLENT" },
+            { rollNo: 260682, name: "Affan Ali", score: "31 / 35", percentage: "89%", status: "EXCELLENT" },
+            { rollNo: 266865, name: "Abdul Hadi", score: "28 / 35", percentage: "80%", status: "GOOD" },
+            { rollNo: 299695, name: "MUSTAFA PERVEZ", score: "27 / 35", percentage: "77%", status: "PASSED" },
+            { rollNo: 267832, name: "Muhammad", score: "27 / 35", percentage: "77%", status: "PASSED" },
+            { rollNo: 267133, name: "Muhammad Mustafa Hussain", score: "27 / 35", percentage: "77%", status: "PASSED" },
+            { rollNo: 259144, name: "Abdul Moiz", score: "27 / 35", percentage: "77%", status: "PASSED" },
+            { rollNo: 263630, name: "Mohammad Wasif", score: "26 / 35", percentage: "74%", status: "PASSED" },
+            { rollNo: 265627, name: "Hasnain Ali", score: "26 / 35", percentage: "74%", status: "PASSED" },
+            { rollNo: 262365, name: "Muhammad Faizan Khan", score: "25 / 35", percentage: "71%", status: "PASSED" },
+            { rollNo: 252944, name: "Muhammad Faizan", score: "25 / 35", percentage: "71%", status: "PASSED" },
+            { rollNo: 269662, name: "Huzaifa", score: "25 / 35", percentage: "71%", status: "PASSED" },
+            { rollNo: 258032, name: "Noor ul Hasan Siddique", score: "24 / 35", percentage: "69%", status: "PASSED" },
+            { rollNo: 265599, name: "Musab Bin Ahsan", score: "23 / 35", percentage: "66%", status: "PASSED" },
+            { rollNo: 258595, name: "ather junaid siddique", score: "23 / 35", percentage: "66%", status: "PASSED" },
+            { rollNo: 286820, name: "Mohsnain Raza", score: "23 / 35", percentage: "66%", status: "PASSED" },
+            { rollNo: 265416, name: "Abdullah", score: "22 / 35", percentage: "63%", status: "PASSED" },
+            { rollNo: 265887, name: "Azeem Shahid", score: "22 / 35", percentage: "63%", status: "PASSED" },
+            { rollNo: 272187, name: "Hafiz sharim sohail", score: "21 / 35", percentage: "60%", status: "NEED IMPROVEMENT" },
+            { rollNo: 265811, name: "syed saad zaidi", score: "21 / 35", percentage: "60%", status: "NEED IMPROVEMENT" },
+            { rollNo: 261523, name: "Aman ul haq", score: "20 / 35", percentage: "57%", status: "NEED IMPROVEMENT" },
+            { rollNo: 255275, name: "Muhammad Moosa", score: "19 / 35", percentage: "54%", status: "NEED IMPROVEMENT" },
+            { rollNo: 265812, name: "syed anas zaidi", score: "19 / 35", percentage: "54%", status: "NEED IMPROVEMENT" },
+            { rollNo: 284822, name: "Hamdan", score: "18 / 35", percentage: "51%", status: "NEED IMPROVEMENT" },
+            { rollNo: 265584, name: "Saleh Raza", score: "16 / 35", percentage: "46%", status: "FAIL" },
+            { rollNo: 271752, name: "syed shariq ahmed", score: "13 / 35", percentage: "37%", status: "FAIL" }
+        ];
+
+        function checkResult() {
+            let rollNumber = document.getElementById("rollNumber").value;
+            let result = results.find(item => item.rollNo == rollNumber);
+            
+            if(result) {
+                document.getElementById("result").innerHTML = `
+                    <h2>Result for ${result.name}</h2>
+                    <p><strong>Score:</strong> ${result.score}</p>
+                    <p><strong>Percentage:</strong> ${result.percentage}</p>
+                    <p><strong>Status:</strong> ${result.status}</p>
+                `;
+            } else {
+                document.getElementById("result").innerHTML = '<p class="error">Invalid roll number!</p>';
+            }
+        }
+    </script>
+</body>
+</html>
